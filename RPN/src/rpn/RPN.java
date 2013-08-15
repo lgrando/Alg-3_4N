@@ -4,6 +4,8 @@
  */
 package rpn;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jean.Carli
@@ -14,6 +16,7 @@ public class RPN {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        JOptionPane.showMessageDialog(null, "Teste do repositirio!!!");
+        JOptionPane.showMessageDialog(null, "Teste do Push");
     }
 }
