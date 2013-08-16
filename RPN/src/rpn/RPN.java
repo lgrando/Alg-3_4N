@@ -4,7 +4,8 @@
  */
 package rpn;
 
-import javax.swing.JOptionPane;
+import java.util.Scanner;
+import java.util.Stack;
 
 /**
  *
@@ -16,7 +17,21 @@ public class RPN {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        JOptionPane.showMessageDialog(null, "Teste do repositirio!!!");
-        JOptionPane.showMessageDialog(null, "Teste do Push");
+        Scanner s = new Scanner(System.in);
+        Stack<Double> pilha = new <Double>Stack();
+        String om, parentese;
+        int idxi, idxf;
+        
+        System.out.println("Digite a operação matematica: ");
+        om = s.nextLine();
+        
+        if(om.lastIndexOf("(") >= 0){
+            idxi = om.lastIndexOf("(");
+            parentese = om.substring(idxi, om.length());
+            idxf = parentese.indexOf(")") + idxi;
+            parentese = om.substring(idxi + 1, idxf);
+            System.out.println(parentese);
+        }
+        
     }
 }
