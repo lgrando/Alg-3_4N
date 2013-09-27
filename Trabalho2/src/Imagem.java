@@ -3,9 +3,12 @@ public class Imagem {
     
     private int largura;
     private int altura;
-    private char colorida;
+    private String colorida;
     private String nomeArquivo;
-    //private int cor;
+    private Integer[][] mat;
+    
+    
+    
     
     public double getLargura() {
         return largura;
@@ -31,26 +34,15 @@ public class Imagem {
         this.nomeArquivo = nomeArquivo;
     }
     
-    public char getColorida() {
+    public String getColorida() {
         return colorida;
     }
 
-    public void setColorida(char colorida) {
+    public void setColorida(String colorida) {
         this.colorida = colorida;
     }  
-    
-    /*public int getCor() {
-        return cor;
-    }
-
-    public void setCor(int cor) {
-        this.cor = cor;
-    }  */
-    
-    public void SetPixel(Ponto p, Cor c){
         
-    }
-    public void AddShape(){
-        
+    public void criaMatriz(){
+        mat = new Integer[this.largura][this.altura];
     }
 }

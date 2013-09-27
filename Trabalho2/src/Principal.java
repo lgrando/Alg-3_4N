@@ -5,13 +5,19 @@ public class Principal {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         String cmd;
+        Imagem img = new Imagem();
+        
         
         do{
           
             cmd = scan.next();
 
             if(cmd.equalsIgnoreCase("imagem")){
-                System.out.println("O comando é: " + cmd + "\n A largura é: " + scan.nextInt() + "\n A altura é: " + scan.nextInt() + "\n cor ou cinza? " + scan.next());
+                img.setLargura(scan.nextInt());
+                img.setAltura(scan.nextInt());
+                img.setColorida(scan.next());
+                img.criaMatriz();
+                System.out.println("O comando é: " + cmd + "\n A largura é: " + img.getLargura() + "\n A altura é: " + img.getAltura() + "\n cor ou cinza? " + img.getColorida());
             }else if(cmd.equalsIgnoreCase("salvar")){
                 System.out.println("O comando é: " + cmd + "\n O nome do arquivo é: " + scan.next());
             }else if(cmd.equalsIgnoreCase("cor")){
