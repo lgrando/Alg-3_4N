@@ -9,8 +9,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Scanner;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 /**
  *
@@ -18,7 +16,6 @@ import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
  */
 public class Grafo {
     public void montarGrafo() throws FileNotFoundException, IOException{
-        Scanner scan = new Scanner(System.in);
         String linha;
 
         FileInputStream stream = new FileInputStream("Grafo.txt");
@@ -26,13 +23,11 @@ public class Grafo {
         BufferedReader reader = new BufferedReader(streamReader);
 
         linha = reader.readLine();
-        System.out.println(linha);
-        
         
         while(linha != null)
         {
-            linha = reader.readLine();
             System.out.println(linha);
+            linha = reader.readLine();
         }
     }
 }

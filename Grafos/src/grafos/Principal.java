@@ -18,8 +18,8 @@ public class Principal {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        Grafo arc = new Grafo();
+        Grafo gr = new Grafo();
         
-        arc.montarGrafo();
+        gr.montarGrafo();
     }
 }
