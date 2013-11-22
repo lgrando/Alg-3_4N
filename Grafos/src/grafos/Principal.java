@@ -19,7 +19,6 @@ public class Principal {
      */
     public static void main(String[] args) throws FileNotFoundException, IOException {
         Grafo gr = new Grafo();
-        
         gr.montarGrafo();
     }
 }
