@@ -15,7 +15,7 @@ public class Vertice {
     private int id;
     private boolean visitando = false;
     private boolean visitado = false;
-    private ArrayList<Integer> arestaVizinha = new ArrayList<Integer>();
+    private ArrayList<Integer> verticesVizinha = new ArrayList<Integer>();
     private ArrayList<Integer> peso = new ArrayList<Integer>();
 
     public int getId() {
@@ -26,12 +26,12 @@ public class Vertice {
         this.id = id;
     }
 
-    public ArrayList<Integer> getArestaVizinha() {
-        return arestaVizinha;
+    public ArrayList<Integer> getVerticeVizinha() {
+        return verticesVizinha;
     }
 
-    public void setArestaVizinha(int are) {
-        this.arestaVizinha.add(are);
+    public void setVerticeVizinha(int are) {
+        this.verticesVizinha.add(are);
     }
 
     public ArrayList<Integer> getPeso() {

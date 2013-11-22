@@ -30,39 +30,46 @@ public class Grafo {
         valor = scan.next();
         
         Vertice ver = new Vertice();
-        JOptionPane.showMessageDialog(null, valor);
         ver.setId(Integer.parseInt(valor));
-        ver.setArestaVizinha(Integer.parseInt(scan.next()));
+        ver.setVerticeVizinha(Integer.parseInt(scan.next()));
         ver.setPeso(Integer.parseInt(scan.next()));
         
         grafo.add(ver);
         
-        while(valor != null)
+        while(scan.hasNext())
         {
             valor = scan.next();
-            
-            Vertice ver1 = new Vertice();
+
             existe = verticeExiste(Integer.parseInt(valor));
             if(existe != -1){
-                grafo.get(existe).setArestaVizinha(Integer.parseInt(scan.next()));
+                grafo.get(existe).setVerticeVizinha(Integer.parseInt(scan.next()));
                 grafo.get(existe).setPeso(Integer.parseInt(scan.next()));
             }else {
-                ver.setId(Integer.parseInt(valor));
-                ver.setArestaVizinha(Integer.parseInt(scan.next()));
-                ver.setPeso(Integer.parseInt(scan.next()));
+                Vertice ver1 = new Vertice();
+                ver1.setId(Integer.parseInt(valor));
+                ver1.setVerticeVizinha(Integer.parseInt(scan.next()));
+                ver1.setPeso(Integer.parseInt(scan.next()));
                 grafo.add(ver);
             }
+            exibeGrafo();
         }
     }
     
-    public int verticeExiste (int linha){
-        int existe = -1;
+    public int verticeExiste (int id){
         for(int i = 0; i < grafo.size(); i++){
-            if(grafo.get(i).getId() == linha){
+            if(grafo.get(i).getId() == id){
                 existe = i;
                 break;
             }
         }
         return existe;
+    }
+    
+    public void exibeGrafo(){
+        for(int i = 0; i <= grafo.size(); i++){
+            for(int j = 0; j <= grafo.get(i).getVerticeVizinha().size(); i++){
+                System.out.println(grafo.get(i).getId() + " --> " + grafo.get(i).getVerticeVizinha().get(j));
+            }
+        }
     }
 }
