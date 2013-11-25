@@ -13,10 +13,43 @@ import java.util.ArrayList;
 
 public class Vertice {
     private int id;
+    private int etiqueta;
     private boolean visitando = false;
     private boolean visitado = false;
     private ArrayList<Integer> verticesVizinha = new ArrayList<Integer>();
     private ArrayList<Integer> peso = new ArrayList<Integer>();
+    
+    public int getEtiqueta() {
+        return etiqueta;
+    }
+
+    public void setEtiqueta(int etiqueta) {
+        this.etiqueta = etiqueta;
+    }
+
+    public boolean isVisitando() {
+        return visitando;
+    }
+
+    public void setVisitando(boolean visitando) {
+        this.visitando = visitando;
+    }
+
+    public boolean isVisitado() {
+        return visitado;
+    }
+
+    public void setVisitado(boolean visitado) {
+        this.visitado = visitado;
+    }
+
+    public ArrayList<Integer> getVerticesVizinha() {
+        return verticesVizinha;
+    }
+
+    public void setVerticesVizinha(ArrayList<Integer> verticesVizinha) {
+        this.verticesVizinha = verticesVizinha;
+    }
 
     public int getId() {
         return id;
