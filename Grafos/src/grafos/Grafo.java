@@ -9,7 +9,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -67,12 +66,34 @@ public class Grafo {
         }
         return this.existe;
     }
-    
-    public void exibeGrafo(){
-        for(int i = 0; i < grafo.size(); i++){
-            for(int j = 0; j < grafo.get(i).getVerticeVizinhos().size(); j++){
+
+    public void exibeGrafo() {
+        for (int i = 0; i < grafo.size(); i++) {
+            for (int j = 0; j < grafo.get(i).getVerticeVizinhos().size(); j++) {
                 System.out.println(grafo.get(i).getId() + " " + grafo.get(i).getVerticeVizinhos().get(j) + " " + grafo.get(i).getPeso().get(j));
             }
+        }
+    }
+
+    public void Dijkstra(int from, int to) {
+        String caminho = null;
+        
+        for (int i = 0; i <= grafo.size(); i++) {
+            if (grafo.get(i).getId() == from) {
+                grafo.get(i).setEtiqueta(0);
+                grafo.get(i).setVisitando(true);
+            }
+        }
+
+        for (int i = 0; i <= grafo.size(); i++) {
+            for (int j = 0; j <= grafo.get(i).getVerticeVizinhos().size(); j++) {
+                int novaEtiqueta;
+                novaEtiqueta = grafo.get(i).getEtiqueta() + grafo.get(i).getPeso().get(j);
+                if (novaEtiqueta < grafo.get(grafo.get(i).getVerticeVizinhos().get(j)).getEtiqueta()) {
+                    grafo.get(grafo.get(i).getVerticeVizinhos().get(j)).setEtiqueta(novaEtiqueta);
+                }
+            }
+            caminho = caminho + String.valueOf(grafo.get(i).getId()) + " --> ";
         }
     }
 }
