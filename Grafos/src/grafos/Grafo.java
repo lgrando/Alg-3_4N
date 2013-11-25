@@ -33,7 +33,7 @@ public class Grafo {
         Vertice ver = new Vertice();
         ver.setId(Integer.parseInt(valor));
         ver.setEtiqueta(Integer.MAX_VALUE);
-        ver.setVerticeVizinha(Integer.parseInt(scan.next()));
+        ver.setVerticeVizinhos(Integer.parseInt(scan.next()));
         ver.setPeso(Integer.parseInt(scan.next()));
 
         grafo.add(ver);
@@ -41,28 +41,38 @@ public class Grafo {
         while (scan.hasNext()) {
             valor = scan.next();
 
-            existe = verticeExiste(Integer.parseInt(valor));
-            if (existe != -1) {
-                grafo.get(existe).setVerticeVizinha(Integer.parseInt(scan.next()));
-                grafo.get(existe).setPeso(Integer.parseInt(scan.next()));
+            this.existe = verticeExiste(Integer.parseInt(valor));
+            if (this.existe != -1) {
+                grafo.get(this.existe).setVerticeVizinhos(Integer.parseInt(scan.next()));
+                grafo.get(this.existe).setPeso(Integer.parseInt(scan.next()));
             } else {
                 Vertice ver1 = new Vertice();
                 ver1.setId(Integer.parseInt(valor));
                 ver1.setEtiqueta(Integer.MAX_VALUE);
-                ver1.setVerticeVizinha(Integer.parseInt(scan.next()));
+                ver1.setVerticeVizinhos(Integer.parseInt(scan.next()));
                 ver1.setPeso(Integer.parseInt(scan.next()));
-                grafo.add(ver);
+                grafo.add(ver1);
             }
         }
+        exibeGrafo();
     }
 
     public int verticeExiste(int id) {
+        this.existe = -1;
         for (int i = 0; i < grafo.size(); i++) {
             if (grafo.get(i).getId() == id) {
-                existe = i;
+                this.existe = i;
                 break;
             }
         }
-        return existe;
+        return this.existe;
+    }
+    
+    public void exibeGrafo(){
+        for(int i = 0; i < grafo.size(); i++){
+            for(int j = 0; j < grafo.get(i).getVerticeVizinhos().size(); j++){
+                System.out.println(grafo.get(i).getId() + " " + grafo.get(i).getVerticeVizinhos().get(j) + " " + grafo.get(i).getPeso().get(j));
+            }
+        }
     }
 }
