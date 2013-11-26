@@ -77,7 +77,7 @@ public class Grafo {
     }
     
     public void zeraEtiquetaVerticeInicial(int from){
-        for (int i = 0; i <= grafo.size(); i++) {
+        for (int i = 0; i < grafo.size(); i++) {
             if (grafo.get(i).getId() == from) {
                 grafo.get(i).setEtiqueta(0);
                 grafo.get(i).setVisitado(true);
@@ -91,13 +91,13 @@ public class Grafo {
         do{
             existeVerticeNaoVisitado = 0;
             
-            for(int i = 0; i <= grafo.size(); i++){
+            for(int i = 0; i < grafo.size(); i++){
                 if(grafo.get(i).getEtiqueta() <= menorEtiquetaNaoVisitada && (!grafo.get(i).isVisitado())){
                     menorEtiquetaNaoVisitada = grafo.get(i).getEtiqueta();
                 }
             }
             
-            for(int i = 0; i <= grafo.size(); i++){
+            for(int i = 0; i < grafo.size(); i++){
                 if(grafo.get(i).getEtiqueta() == menorEtiquetaNaoVisitada && (!grafo.get(i).isVisitado())){
                     grafo.get(i).setVisitado(true);
                     
@@ -110,7 +110,7 @@ public class Grafo {
                 }
             }
             
-            for(int i = 0; i <= grafo.size(); i++){
+            for(int i = 0; i < grafo.size(); i++){
                 if(!grafo.get(i).isVisitado()){
                     existeVerticeNaoVisitado++;
                 }
