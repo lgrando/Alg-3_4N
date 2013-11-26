@@ -30,6 +30,10 @@ public class Principal {
         System.out.print("\n Digite o vertice de destino: ");
         to = scan.nextInt();
         
-        gr.Dijkstra(from, to);
+        gr.zeraEtiquetaVerticeInicial(from);
+        
+        gr.Dijkstra();
+        
+        System.out.println(gr.menorCaminho(from, to));
     }
 }

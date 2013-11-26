@@ -14,8 +14,8 @@ import java.util.ArrayList;
 public class Vertice {
     private int id;
     private int etiqueta;
-    private boolean visitando = false;
     private boolean visitado = false;
+    private int precedente;
     private ArrayList<Integer> verticesVizinhos = new ArrayList<Integer>();
     private ArrayList<Integer> peso = new ArrayList<Integer>();
     
@@ -23,16 +23,16 @@ public class Vertice {
         return etiqueta;
     }
 
+    public int getPrecedente() {
+        return precedente;
+    }
+
+    public void setPrecedente(int precedente) {
+        this.precedente = precedente;
+    }
+
     public void setEtiqueta(int etiqueta) {
         this.etiqueta = etiqueta;
-    }
-
-    public boolean isVisitando() {
-        return visitando;
-    }
-
-    public void setVisitando(boolean visitando) {
-        this.visitando = visitando;
     }
 
     public boolean isVisitado() {

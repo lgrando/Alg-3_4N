@@ -18,6 +18,7 @@ public class Grafo {
 
     Scanner scan;
     private ArrayList<Vertice> grafo = new ArrayList<Vertice>();
+    private ArrayList<Integer> caminho = new ArrayList<Integer>();
     int existe = -1;
 
     public Grafo() throws FileNotFoundException {
@@ -74,26 +75,66 @@ public class Grafo {
             }
         }
     }
-
-    public void Dijkstra(int from, int to) {
-        String caminho = null;
-        
+    
+    public void zeraEtiquetaVerticeInicial(int from){
         for (int i = 0; i <= grafo.size(); i++) {
             if (grafo.get(i).getId() == from) {
                 grafo.get(i).setEtiqueta(0);
-                grafo.get(i).setVisitando(true);
+                grafo.get(i).setVisitado(true);
             }
         }
+    }
 
-        for (int i = 0; i <= grafo.size(); i++) {
-            for (int j = 0; j <= grafo.get(i).getVerticeVizinhos().size(); j++) {
-                int novaEtiqueta;
-                novaEtiqueta = grafo.get(i).getEtiqueta() + grafo.get(i).getPeso().get(j);
-                if (novaEtiqueta < grafo.get(grafo.get(i).getVerticeVizinhos().get(j)).getEtiqueta()) {
-                    grafo.get(grafo.get(i).getVerticeVizinhos().get(j)).setEtiqueta(novaEtiqueta);
+    public void Dijkstra() {
+        int existeVerticeNaoVisitado;
+        int menorEtiquetaNaoVisitada = 0;
+        do{
+            existeVerticeNaoVisitado = 0;
+            
+            for(int i = 0; i <= grafo.size(); i++){
+                if(grafo.get(i).getEtiqueta() <= menorEtiquetaNaoVisitada && (!grafo.get(i).isVisitado())){
+                    menorEtiquetaNaoVisitada = grafo.get(i).getEtiqueta();
                 }
             }
-            caminho = caminho + String.valueOf(grafo.get(i).getId()) + " --> ";
-        }
+            
+            for(int i = 0; i <= grafo.size(); i++){
+                if(grafo.get(i).getEtiqueta() == menorEtiquetaNaoVisitada && (!grafo.get(i).isVisitado())){
+                    grafo.get(i).setVisitado(true);
+                    
+                    for(int j = 0; j <= grafo.get(i).getVerticeVizinhos().size(); j++){
+                        if((grafo.get(grafo.get(i).getVerticeVizinhos().get(j)).getEtiqueta()) > (grafo.get(i).getEtiqueta() + grafo.get(i).getPeso().get(j))){
+                            grafo.get(grafo.get(i).getVerticeVizinhos().get(j)).setEtiqueta(grafo.get(i).getEtiqueta() + grafo.get(i).getPeso().get(j));
+                            grafo.get(grafo.get(i).getVerticeVizinhos().get(j)).setPrecedente(grafo.get(i).getId());
+                        }
+                    }
+                }
+            }
+            
+            for(int i = 0; i <= grafo.size(); i++){
+                if(!grafo.get(i).isVisitado()){
+                    existeVerticeNaoVisitado++;
+                }
+            }
+            
+        }while(existeVerticeNaoVisitado != 0);
+    }
+    
+    public String menorCaminho(int from, int to) {
+        String menorCaminho = null;
+        this.caminho.add(to);
+
+            for (int i = 0; i <= this.grafo.size(); i++) {
+                if (this.grafo.get(i).getId() == to) {
+                    this.caminho.add(this.grafo.get(i).getPrecedente());
+                    to = this.grafo.get(i).getPrecedente();
+                    i = 0;
+                }
+            }
+            
+            for(int i = 0; i <= this.caminho.size(); i++){
+                menorCaminho = menorCaminho + " --> " + this.caminho.get(i);
+            }
+        
+        return menorCaminho;
     }
 }
