@@ -164,7 +164,7 @@ public class Grafo {
             }
         }
 
-        for (int i = this.caminho.size(); i > 0; i--) {
+        for (int i = this.caminho.size() - 1; i > 0; i--) {
             menorCaminho = menorCaminho + " --> " + this.caminho.get(i);
         }
 
